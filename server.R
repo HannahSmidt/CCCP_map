@@ -78,7 +78,8 @@ function(input, output, session) {
       addProviderTiles(providers$CartoDB.Positron) %>%
       addPolygons(data = focus_countries, color = "#444444", weight = 1
                   , opacity = 1.0, fillOpacity = 0.2, smooth = 0.5
-                  , highlightOptions = highlightOptions(color = "black", weight = 2, bringToFront = TRUE)
+                  , highlightOptions = highlightOptions(color = "black", weight = 2, bringToFront = TRUE),
+                  options = pathOptions(clickable = FALSE)
       )
   })
   
