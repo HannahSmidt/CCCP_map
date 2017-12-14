@@ -7,12 +7,6 @@ library("shinyjs")
 
 source("process-udcp-data.R", local = TRUE)
 
-download.file(url = "http://ucdp.uu.se/downloads/ged/ged171-RData.zip", destfile = "data-raw/ucdp-data.zip")
-unzip(exdir = "data-raw/ucdp-data", zipfile = "data-raw/ucdp-data.zip")
-load("data-raw/ucdp-data/ged171.Rdata")
-
-min(gedDataR$weights)
-
 load("data-raw/world_shapefiles.rdata")
 
 focus_countries <- world_shapefiles %>%
@@ -91,7 +85,7 @@ function(input, output, session) {
     
     leafletProxy("map", data = filteredData()) %>%
       clearMarkers() %>%
-      addCircleMarkers(~longitude, ~latitude, popup = ~as.character(best)
+      addCircleMarkers(~longitude, ~latitude, popup = ~as.character(dyad_name)
                        ,radius = ~weights, color = ~colors, stroke = TRUE, fillOpacity = 0.8) %>%
       clearControls() %>%
       addLegend("bottomleft", colors = as.character(colors_list), 
