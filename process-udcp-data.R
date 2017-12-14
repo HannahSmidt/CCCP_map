@@ -11,6 +11,7 @@ focus_country_names <- c("Colombia",
                          "Venezuela",
                          "Rwanda",
                          "Burundi",
+                         "DR Congo (Zaire)",
                          "Afghanistan",
                          "Pakistan",
                          "Iraq",
@@ -26,6 +27,6 @@ focus_dyads <- ged171 %>%
 gedDataR <- ged171 %>%
   filter(dyad_name %in% focus_dyads) %>%
   filter(!grepl(excluded_dyads, dyad_name)) %>%
-  select(country, year, best, type_of_violence, latitude, longitude) %>%
+  select(country, year, dyad_name, best, type_of_violence, latitude, longitude) %>%
   rename(type_of_vi = type_of_violence) %>%
   distinct()
