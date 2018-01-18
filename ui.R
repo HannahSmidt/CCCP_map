@@ -47,7 +47,7 @@ bootstrapPage(
       label = "Type of violence",
       choices = list(
         "Violence against/from state" = 1,
-        "Violence between non-state" = 2,
+        "Violence between non-state actors" = 2,
         "Violence against civilians" = 3
       ),
       selected = 1

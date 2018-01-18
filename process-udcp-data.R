@@ -5,6 +5,7 @@ unzip(exdir = "data-raw/ucdp-data", zipfile = "data-raw/ucdp-data.zip")
 
 ged171 <- read_csv("data-raw/ucdp-data/ged171.csv")
 
+
 excluded_dyads <- c("Government of Congo|Zimbabwe|Angola|Uganda") # Governments that are not the ones of the focus cases
 
 focus_country_names <- c("Colombia",
@@ -16,13 +17,18 @@ focus_country_names <- c("Colombia",
                          "Pakistan",
                          "Iraq",
                          "Mexico",
-                         "Myanmar (Burma)")
+                         "Myanmar (Burma)",
+                         "Somalia",
+                         "Philippines",
+                         "Ukraine",
+                         "Nigeria")
 
 focus_dyads <- ged171 %>%
   filter(country %in% focus_country_names) %>%
   select(dyad_name) %>%
   .[[1]] %>%
   unique()
+
 
 gedDataR <- ged171 %>%
   filter(dyad_name %in% focus_dyads) %>%

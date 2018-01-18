@@ -21,7 +21,11 @@ focus_countries <- world_shapefiles %>%
     "SYR",
     "RWA",
     "BDI",
-    "COD"
+    "COD",
+    "NGA",
+    "UKR",
+    "SOM",
+    "PHL"
   )) 
 
 colors_list <- list("Violence against/from state" = "#1B9E77", 
@@ -89,9 +93,7 @@ function(input, output, session) {
                        ,radius = ~weights, color = ~colors, stroke = TRUE, fillOpacity = 0.8) %>%
       clearControls() %>%
       addLegend("bottomleft", colors = as.character(colors_list), 
-                labels = plyr::mapvalues(colorsLegend,
-                                         from = as.character(colors_list),
-                                         to = names(colors_list)), title = "Event type") %>%
+                labels = names(colors_list), title = "Event type") %>%
       addLegendCustom(colors = rep(colorLegend, 3), labels = labelsLegend, sizes = sizesLegend)
   })
 }
